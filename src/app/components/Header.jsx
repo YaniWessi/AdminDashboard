@@ -49,13 +49,8 @@ function Header() {
   return (
     <header className="bg-gray-100  p-8">
     
+      {/* don't forget about this hamburger popup */}
       <div className="flex items-center justify-between">
-        {isMobile && (
-          <div className="flex flex-col items-center pr-4">
-           <FaBars className="mb-4"/>
-
-          </div>
-        )}
 
         
         <div className="flex items-center w-full">
@@ -67,11 +62,11 @@ function Header() {
                         <input
                             type="text"
                             placeholder="Search"
-                            className="bg-gray-700 hidden md:block rounded-full p-2 text-sm text-gray-300 focus:outline-none focus:bg-gray-600"
+                            className="bg-gray-700 hidden md:block rounded-full p-2 text-sm text-gray-300 focus:outline-none focus:bg-gray-600 lg:ml-16 ml-0"
                             />
 
                         {isSearchVisible? (
-                          <div className="relative w-full md:hidden">
+                          <div className="relative w-full md:hidden md:ml-5">
                             <input
                             
                             type="text"
@@ -86,7 +81,7 @@ function Header() {
 
                         ) : (
                           <button
-                          className="block focus:outline-none text-white text-xl"
+                          className="block focus:outline-none text-white text-xl md:ml-8"
                           onClick={toggleSearch}
                           >
                         {/* <MdSearch className="hidden md:block" onClick={toggleSearch} /> */}
@@ -95,6 +90,13 @@ function Header() {
 
                         ) }
               </div>
+
+  
+              <div className="flex flex-col items-center pr-4 lg:hidden ">
+              <FaBars className="mb-4"/>
+
+              </div>
+              
 
              {isSearchVisible? (
               <div className="flex flex-row">
