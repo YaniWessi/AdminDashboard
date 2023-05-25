@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { MdSearch } from 'react-icons/md';
 import { FaPlusSquare, FaTimes, FaRegBell, FaRegClone, FaBars  } from 'react-icons/fa';
 import profileImage from "../../../public/Yannick.png";
@@ -55,15 +55,20 @@ function Header() {
         
         <div className="flex items-center w-full">
 
+              {/* <div className={`flex flex-col items-center pr-4 ${isSearchVisible ? 'hidden md:flex' : ''} lg:hidden`}>
 
+                <FaBars className="mb-4"/>
 
-              <div className="relative mr-4 w-full">
+              </div>  */}
+
+              <div className={`relative mr-4 ${isSearchVisible? 'w-full' : 'lg:w-full'}`}>
 
                         <input
                             type="text"
                             placeholder="Search"
-                            className="bg-gray-700 hidden md:block rounded-full p-2 text-sm text-gray-300 focus:outline-none focus:bg-gray-600 lg:ml-16 ml-0"
+                            className="bg-gray-700 hidden md:inline rounded-full p-2 text-sm text-gray-300 focus:outline-none focus:bg-gray-600 lg:ml-16 ml-0"
                             />
+   
 
                         {isSearchVisible? (
                           <div className="relative w-full md:hidden md:ml-5">
@@ -79,54 +84,46 @@ function Header() {
                             />
                           </div>
 
-                        ) : (
-                          <button
-                          className="block focus:outline-none text-white text-xl md:ml-8"
-                          onClick={toggleSearch}
-                          >
-                        {/* <MdSearch className="hidden md:block" onClick={toggleSearch} /> */}
-                        <FaPlusSquare className="md:hidden" onClick={toggleSearch} />
-                          </button>
+                        ) : null
+                         }
 
-                        ) }
-              </div>
-
-  
-              <div className="flex flex-col items-center pr-4 lg:hidden ">
-              <FaBars className="mb-4"/>
-
+                        
               </div>
               
 
-             {isSearchVisible? (
-              <div className="flex flex-row">
-                <FaRegBell className="hidden mr-8 text-xl" />
-                <FaRegClone className="hidden mr-8 text-xl" />
+            
+              <div className={`flex flex-row ${isSearchVisible ? 'hidden md:flex' : ''} justify-start md:justify-end`}>
+                <div className={`flex flex-col items-center pr-4 ${isSearchVisible ? 'hidden md:flex' : ''} lg:hidden`}>
+
+                  <FaBars className="mb-4"/>
+
+                </div> 
+
+                <button className="block focus:outline-none text-white text-xl md:ml-8" onClick={toggleSearch}>
+                  <FaPlusSquare className="md:hidden" onClick={toggleSearch} />
+                </button>   
+
+                  <FaRegBell className="mr-8 text-xl" />
+                  <FaRegClone className="mr-8 text-xl" />
               </div>
-              ) : (
-                <div className="flex flex-row">
-                <FaRegBell className="mr-8 text-xl" />
-                <FaRegClone className="mr-8 text-xl" />
-              </div>
-              )}  
+              
 
         </div>
 
 
-
+       
         <div className="flex items-center">         
                         
-                        
-          <div className="relative inline-block">
+        <div className={`${isSearchVisible ? 'hidden' : 'relative inline-block'} md:inline-block`}>
             <button className="flex items-center focus:outline-none" onClick={toggleDropdown}>
-                <Image
-                  src={profileImage}
-                  alt="Profile "
-                  className="w-10 h-10 rounded-full mr-1"
-                />
-                <p className="ml-2">John</p>
-                <p className="ml-2">Doe</p>
-                <IoMdArrowDropdown className="ml-2" />
+              <Image
+                src={profileImage}
+                alt="Profile"
+                className="w-10 h-10 rounded-full mr-1"
+              />
+              <p className="ml-2">John</p>
+              <p className="ml-2">Doe</p>
+              <IoMdArrowDropdown className="ml-2" />
             </button>
 
             {isDropdownOpen && (
@@ -137,8 +134,8 @@ function Header() {
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Logout</a>
                 </div>
               </div>
-            )}        
-          </div>
+            )}
+        </div>
 
         </div>
 
