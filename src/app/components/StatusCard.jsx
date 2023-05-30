@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function StatusCard({headerContent, completedTasks, totalTasks, bgColor}) {
+export default function StatusCard({headerContent, completedTasks, totalTasks, bgColor, classname }) {
   return (
-    <div>
+    <div className={classname}>
       <button>...</button>
       <h4>{headerContent}</h4>
       <p>{completedTasks}/{totalTasks}</p>
