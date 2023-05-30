@@ -1,9 +1,17 @@
-import StatusCard from './components/StatusCard'
+import PageRowHeader from './components/PageRowHeader';
+import PageRowContent from './components/PageRowContent';
+import PageSecondRowContent from './components/PageSecondRowContent';
+import PageThirdRowContent from './components/PageThirdRowContent';
+import PageFourthRowContent from './components/PageFourthRowContent';
 
 export default function Home() {
   return (
     <div>
-     <StatusCard headerContent={"task completed"} completedTasks={8} totalTasks={24} />
+     <PageRowHeader />
+     <PageRowContent />
+     <PageSecondRowContent/>
+     <PageThirdRowContent/>
+     <PageFourthRowContent/>
     </div>
   )
 }
