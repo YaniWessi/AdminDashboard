@@ -66,7 +66,7 @@ function Header() {
                         <input
                             type="text"
                             placeholder="Search"
-                            className="bg-gray-700 hidden md:inline rounded-full p-2 text-sm text-gray-300 focus:outline-none focus:bg-gray-600 lg:ml-16 ml-0"
+                            className="bg-gray-700 w-72 h-12 hidden md:inline rounded-full p-2 text-sm text-gray-300 focus:outline-none focus:bg-gray-600 lg:ml-16 ml-0"
                             />
    
 
@@ -121,9 +121,8 @@ function Header() {
                 alt="Profile"
                 className="w-10 h-10 rounded-full mr-1"
               />
-              <p className="ml-2">John</p>
-              <p className="ml-2">Doe</p>
-              <IoMdArrowDropdown className="ml-2" />
+              <p className="ml-2  sm:hidden hidden lg:block whitespace-nowrap">John Doe</p>
+              <IoMdArrowDropdown className="ml-2 sm:hidden hidden lg:block" />
             </button>
 
             {isDropdownOpen && (
