@@ -14,8 +14,15 @@ function Header() {
 
   const [isMobile, setIsMobile] = useState(false);
 
+  // Controls the mobile hamburger nav; real menu contents to come later.
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const toggleSearch = () => {
     setSearchVisible(!isSearchVisible);
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
   };
 
 
@@ -48,8 +55,7 @@ function Header() {
 
   return (
     <header className="bg-gray-100  p-8">
-    
-      {/* don't forget about this hamburger popup */}
+
       <div className="flex items-center justify-between">
 
         
@@ -95,13 +101,13 @@ function Header() {
               <div className={`flex flex-row ${isSearchVisible ? 'hidden md:flex' : ''} justify-start md:justify-end`}>
                 <div className={`flex flex-col items-center pr-4 ${isSearchVisible ? 'hidden md:flex' : ''} lg:hidden`}>
 
-                  <FaBars className="mb-4"/>
+                  <FaBars className="mb-4 cursor-pointer" onClick={toggleMobileMenu} />
 
-                </div> 
+                </div>
 
                 <button className="block focus:outline-none text-white text-xl md:ml-8" onClick={toggleSearch}>
-                  <FaPlusSquare className="md:hidden" onClick={toggleSearch} />
-                </button>   
+                  <FaPlusSquare className="md:hidden text-gray-700" onClick={toggleSearch} />
+                </button>
 
                   <FaRegBell className="mr-8 text-xl" />
                   <FaRegClone className="mr-8 text-xl" />
@@ -140,7 +146,16 @@ function Header() {
 
 
 
-      </div> 
+      </div>
+
+      {/* Placeholder mobile nav toggled by the hamburger; contents TBD. */}
+      {isMobileMenuOpen && (
+        <nav className="lg:hidden mt-4">
+          <ul className="flex flex-col space-y-2 text-gray-700">
+            <li><a href="#">Menu item</a></li>
+          </ul>
+        </nav>
+      )}
     </header>
   )
 }
